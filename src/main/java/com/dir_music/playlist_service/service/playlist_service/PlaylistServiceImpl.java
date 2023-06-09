@@ -68,7 +68,7 @@ public class PlaylistServiceImpl implements PlaylistService {
             throw new NoSuchElementException();
         }
 
-        playlistRepository.deleteByPlaylistId(input.getPlaylistId());
+        playlistRepository.deleteByPlaylistId(playlistId);
 
     }
 
@@ -120,7 +120,7 @@ public class PlaylistServiceImpl implements PlaylistService {
 
     @Override
     public PlaylistServiceListOutput getPlaylistByUserId(PlaylistServiceGetByUserIdInput input) {
-        final List<PlaylistModel> playlistModels = playlistRepository.findAllByUserIdAndPublic
+        final List<PlaylistModel> playlistModels = playlistRepository.findAllByUserIdAndIsPublic
                         (input.getUserId(), !input.getRequesterUserId().equals(input.getUserId()))
                 .orElse(Collections.emptyList());
 

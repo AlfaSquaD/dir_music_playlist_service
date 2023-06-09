@@ -11,9 +11,9 @@ import java.util.Optional;
 @Repository
 public interface PlaylistRepository extends MongoRepository<PlaylistModel, ObjectId> {
 
-    void deleteByPlaylistId(String playlistId);
+    void deleteByPlaylistId(ObjectId playlistId);
 
-    Optional<List<PlaylistModel>> findAllByUserIdAndPublic(Long userId, boolean isPublic);
+    Optional<List<PlaylistModel>> findAllByUserIdAndIsPublic(Long userId, boolean isPublic);
 
     Optional<List<PlaylistModel>> findByPlaylistNameIsLikeIgnoreCase(String playlistName);
 }
